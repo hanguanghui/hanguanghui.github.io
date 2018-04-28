@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>geospatial-engine | hanguanghui&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,GIS,JAVA" />
+  
+
+  <meta name="description" content="GeoSpatial enginegeospatial engine—地理空间处理引擎，目前对于后端的空间数据处理引擎，比较成熟有jts，geotools等等，提供了丰富的拓扑关系的操作数据转换等实现方式 Geotools是基于JAVA编写的开源GIS工具包，主要提供各种GIS算法，各种数据格式的读写和显示，Geotools用到的两个较重要的开源GIS工具包是JTS和GeoAPI，前者主要是实现各">
+<meta property="og:type" content="article">
+<meta property="og:title" content="geospatial-engine">
+<meta property="og:url" content="http://www.muchu.com/2018/04/28/geospatial-engine/index.html">
+<meta property="og:site_name" content="hanguanghui&#39;s blog">
+<meta property="og:description" content="GeoSpatial enginegeospatial engine—地理空间处理引擎，目前对于后端的空间数据处理引擎，比较成熟有jts，geotools等等，提供了丰富的拓扑关系的操作数据转换等实现方式 Geotools是基于JAVA编写的开源GIS工具包，主要提供各种GIS算法，各种数据格式的读写和显示，Geotools用到的两个较重要的开源GIS工具包是JTS和GeoAPI，前者主要是实现各">
+<meta property="og:locale" content="中文">
+<meta property="og:updated_time" content="2018-04-28T03:39:24.066Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="geospatial-engine">
+<meta name="twitter:description" content="GeoSpatial enginegeospatial engine—地理空间处理引擎，目前对于后端的空间数据处理引擎，比较成熟有jts，geotools等等，提供了丰富的拓扑关系的操作数据转换等实现方式 Geotools是基于JAVA编写的开源GIS工具包，主要提供各种GIS算法，各种数据格式的读写和显示，Geotools用到的两个较重要的开源GIS工具包是JTS和GeoAPI，前者主要是实现各">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GeoSpatial-engine"><span class="toc-text">GeoSpatial engine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turf"><span class="toc-text">Turf</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-geospatial-engine" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">geospatial-engine</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.04.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hanguanghui</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.muchu.com/2018/04/28/geospatial-engine/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="GeoSpatial-engine"><a href="#GeoSpatial-engine" class="headerlink" title="GeoSpatial engine"></a>GeoSpatial engine</h2><p>geospatial engine—地理空间处理引擎，目前对于后端的空间数据处理引擎，比较成熟有jts，geotools等等，提供了丰富的拓扑关系的操作数据转换等实现方式</p>
+<p>Geotools是基于JAVA编写的开源GIS工具包，主要提供各种GIS算法，各种数据格式的读写和显示，Geotools用到的两个较重要的开源GIS工具包是JTS和GeoAPI，前者主要是实现各种GIS拓扑算法，也是基于GeoAPI的。但是由于两个工具包的GeoAPI分别采用不同的Java代码实现，所以在使用时需要相互转化。Geotools又根据两者定义了部分自己的GeoAPI，所以代码显得臃肿，有时容易混淆。由于GeoAPI进展缓慢，Geotools自己对其进行了扩充。另外，Geotools现在还只是基于2D图形的，缺乏对3D空间数据算法和显示的支持</p>
+<p>JTS也是基于java做的一套开源的api，供了一套空间数据操作的核心算法</p>
+<p>今天主要对目前工作中使用到的前端geospatial engine做一个总结，主要涉及jsts和turf</p>
+<p>JSTS是一个符合OGC规范的简单要素空间位置判定函数JavaScript库，JSTS也是Java类库JTS的一个接口，且与OpenLayer3具有互操作性</p>
+<p>通过此类库，可以判断多种空间几何的位置关系，最初建立这个工程的目的是为web地图应用提供一套完整的类库来处理和分析简单几何体，但jsts也可以作为一个独立的几何库。</p>
+<p>##JSTS</p>
+<p>jsts是利用原JTS java源码通过AST AST自动翻译转换而成并保持了该API，除了对IO相关的部分类进行了选择性的并手动移植使其支持WKT，GeoJSON和OpenLayers 3。</p>
+<p>Git 源码：<a href="https://github.com/bjornharrtell/jsts" target="_blank" rel="noopener">https://github.com/bjornharrtell/jsts</a></p>
+<p>就用的情况来说 jsts现在版本缺少对应版本的api，用起来不是特别方面，对模块的管理使用起来不是很顺手。</p>
+<h2 id="Turf"><a href="#Turf" class="headerlink" title="Turf"></a>Turf</h2><p>源码：<a href="https://github.com/Turfjs/turf" target="_blank" rel="noopener">https://github.com/Turfjs/turf</a></p>
+<p>官网：<a href="http://turfjs.org/" target="_blank" rel="noopener">http://turfjs.org/</a></p>
+<p>Turf–Advanced geospatial analysis for browsers and Node.js</p>
+<p><a href="https://turfjs.org/" target="_blank" rel="noopener">Turf</a> is a <a href="https://en.wikipedia.org/wiki/JavaScript_library" target="_blank" rel="noopener">JavaScript library</a> for <a href="http://en.wikipedia.org/wiki/Spatial_analysis" target="_blank" rel="noopener">spatial analysis</a>. It includes traditional spatial operations, helper functions for creating <a href="http://geojson.org/" target="_blank" rel="noopener">GeoJSON</a> data, and data classification and statistics tools. Turf can be added to your website as a client-side plugin, or you can <a href="https://www.npmjs.com/package/turf" target="_blank" rel="noopener">run Turf server-side</a> with <a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> (see below). </p>
+<p>turfjs是一个用于空间分析的JavaScript库。它包括传统的空间操作，用于创建GeoJSON数据的帮助函数，以及数据分类和统计工具</p>
+<p>turf 提供了较为强大的空间分析的api，支持基本基于geojson数据的空间拓扑操作，如buffer/difference/area/length等</p>
+<p>1.install</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm/cnpm install @turf/turf</span><br></pre></td></tr></table></figure>
+<p>2.import </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;point,polygon,area,lineString,length,buffer&#125; <span class="keyword">from</span> <span class="string">'@turf/turf?module'</span></span><br></pre></td></tr></table></figure>
+<p>3.use</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//buffer</span></span><br><span class="line"><span class="keyword">let</span> point = point([<span class="number">-90.548630</span>, <span class="number">14.616599</span>]);</span><br><span class="line"><span class="keyword">let</span> buffered = buffer(point, <span class="number">500</span>, &#123;<span class="attr">units</span>: <span class="string">'miles'</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//length</span></span><br><span class="line"><span class="keyword">let</span> line = lineString([[<span class="number">115</span>, <span class="number">-32</span>], [<span class="number">131</span>, <span class="number">-22</span>], [<span class="number">143</span>, <span class="number">-25</span>], [<span class="number">150</span>, <span class="number">-34</span>]]);</span><br><span class="line"><span class="keyword">let</span> length = length(line, &#123;<span class="attr">units</span>: <span class="string">'miles'</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//area</span></span><br><span class="line"><span class="keyword">let</span> polygon = polygon([[[<span class="number">125</span>, <span class="number">-15</span>], [<span class="number">113</span>, <span class="number">-22</span>], [<span class="number">154</span>, <span class="number">-27</span>], [<span class="number">144</span>, <span class="number">-15</span>], [<span class="number">125</span>, <span class="number">-15</span>]]]);</span><br><span class="line"><span class="keyword">let</span> area = area(polygon);</span><br></pre></td></tr></table></figure>
+<p>turf是mapbox赞助的项目，也填补mapbox在这一方面的不足，但是turf是基于geojson数据格式的空间数据处理，所有结果都是以geojson格式进行处理</p>
+<p>turf同时也提供了其他语言的开发</p>
+<ul>
+<li><a href="https://github.com/mapbox/mapbox-java/blob/master/docs/turf-port.md" target="_blank" rel="noopener">Java</a> (Android, Java SE)</li>
+<li><a href="https://github.com/mapbox/turf-swift/" target="_blank" rel="noopener">Swift</a> (iOS, macOS, tvOS, watchOS, Linux)</li>
+</ul>
+
+    
+  </div>
+
+  
+      <div class="git"></div>
+  
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            <span>微信扫一扫</span>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <span>支付宝扫一扫</span>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/04/04/vue/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.muchu.com/2018/04/28/geospatial-engine/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
