@@ -234,7 +234,7 @@
 <p>Geotools是基于JAVA编写的开源GIS工具包，主要提供各种GIS算法，各种数据格式的读写和显示，Geotools用到的两个较重要的开源GIS工具包是JTS和GeoAPI，前者主要是实现各种GIS拓扑算法，也是基于GeoAPI的。但是由于两个工具包的GeoAPI分别采用不同的Java代码实现，所以在使用时需要相互转化。Geotools又根据两者定义了部分自己的GeoAPI，所以代码显得臃肿，有时容易混淆。由于GeoAPI进展缓慢，Geotools自己对其进行了扩充。另外，Geotools现在还只是基于2D图形的，缺乏对3D空间数据算法和显示的支持</p>
 <p>JTS也是基于java做的一套开源的api，供了一套空间数据操作的核心算法</p>
 <p>今天主要对目前工作中使用到的前端geospatial engine做一个总结，主要涉及jsts和turf。</p>
-<h2 id="JSTS"><a href="#JSTS" class="headerlink" title="JSTS"></a>JSTS</h2>
+<p>##JSTS Tools</p>
 <p>JSTS是一个符合OGC规范的简单要素空间位置判定函数JavaScript库，JSTS也是Java类库JTS的一个接口，且与OpenLayer3具有互操作性</p>
 <p>通过此类库，可以判断多种空间几何的位置关系，最初建立这个工程的目的是为web地图应用提供一套完整的类库来处理和分析简单几何体，但jsts也可以作为一个独立的几何库。</p>
 <p>jsts是利用原JTS java源码通过AST AST自动翻译转换而成并保持了该API，除了对IO相关的部分类进行了选择性的并手动移植使其支持WKT，GeoJSON和OpenLayers 3。</p>
