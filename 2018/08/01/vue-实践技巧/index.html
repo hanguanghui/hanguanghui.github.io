@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>vue 实践技巧 | hanguanghui&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,GIS,JAVA" />
+  
+
+  <meta name="description" content="前言本文纯属个人平时实践过程中的一些经验总结，算是一点点小技巧吧，不是多么高明的技术，如果对你有帮助，那么不胜荣幸。 本文不涉及罕见API使用方法等，大部分内容都是基于对vue的一些实践而已。由于涉嫌投机取巧，可能会带来一些不符合规范的副作用，请根据项目要求酌情使用。  多个页面都使用的到方法，放在 vue.prototype 上会很方便 刚接触 vue 的时候做过一件傻事，因为封装了一个异步请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue 实践技巧">
+<meta property="og:url" content="http://www.muchu.com/2018/08/01/vue-实践技巧/index.html">
+<meta property="og:site_name" content="hanguanghui&#39;s blog">
+<meta property="og:description" content="前言本文纯属个人平时实践过程中的一些经验总结，算是一点点小技巧吧，不是多么高明的技术，如果对你有帮助，那么不胜荣幸。 本文不涉及罕见API使用方法等，大部分内容都是基于对vue的一些实践而已。由于涉嫌投机取巧，可能会带来一些不符合规范的副作用，请根据项目要求酌情使用。  多个页面都使用的到方法，放在 vue.prototype 上会很方便 刚接触 vue 的时候做过一件傻事，因为封装了一个异步请求">
+<meta property="og:locale" content="中文">
+<meta property="og:updated_time" content="2018-08-01T06:24:56.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue 实践技巧">
+<meta name="twitter:description" content="前言本文纯属个人平时实践过程中的一些经验总结，算是一点点小技巧吧，不是多么高明的技术，如果对你有帮助，那么不胜荣幸。 本文不涉及罕见API使用方法等，大部分内容都是基于对vue的一些实践而已。由于涉嫌投机取巧，可能会带来一些不符合规范的副作用，请根据项目要求酌情使用。  多个页面都使用的到方法，放在 vue.prototype 上会很方便 刚接触 vue 的时候做过一件傻事，因为封装了一个异步请求">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-vue-实践技巧" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">vue 实践技巧</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.08.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hanguanghui</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.muchu.com/2018/08/01/vue-实践技巧/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文纯属个人平时实践过程中的一些经验总结，算是一点点小技巧吧，不是多么高明的技术，如果对你有帮助，那么不胜荣幸。</p>
+<p>本文不涉及<code>罕见API</code>使用方法等，大部分内容都是基于对vue的一些实践而已。由于涉嫌投机取巧，可能会带来一些不符合规范的副作用，请根据项目要求酌情使用。</p>
+<ol>
+<li><p><strong>多个页面都使用的到方法，放在 vue.prototype 上会很方便</strong></p>
+<p>刚接触 <code>vue</code> 的时候做过一件傻事，因为封装了一个异步请求接口<code>post</code>,放在 <code>post.js</code> 文件里面，然后在每个需要使用异步请求的页面引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ajax from &apos;./utils/AjaxUtil&apos;</span><br></pre></td></tr></table></figure>
+<p>如果只是这样，还没什么，我们可以写好一个页面以后再复制，可以保证每个页面都有上面的语句。但是如果每个文件所在的目录层级不一样呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 假设正常是这样</span><br><span class="line">importajax from &apos;./utils/AjaxUtil&apos;</span><br><span class="line">// 目录加深一级，就变成这样</span><br><span class="line">import ajax from &apos;./../utils/AjaxUtil&apos;</span><br><span class="line">// 再加深一级的样子</span><br><span class="line">ajax from &apos;./../../utils/AjaxUtil&apos;</span><br></pre></td></tr></table></figure>
+<p>当然，这个时候，我们可以用 别名 <code>@/xxxx/ajax,但是还是少不了要每个页面引用。 那我们来看看，用</code>vue.prototype<code>有多方便？ 首先，你得在</code>vue<code>的入口文件(</code>vue-cli<code>生成的项目的话，默认是</code>/src/main.js`)里面做如下设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import ajax from &apos;./utils/AjaxUtil&apos;</span><br><span class="line">   </span><br><span class="line">vue.prototype.$ajax = ajax</span><br></pre></td></tr></table></figure>
+<p>这样，我们就可以在所有的 <code>vue</code> 组件（页面）里面使用 <code>this.$ajax.post()</code> 方法了，就像 <code>vue</code> 的亲儿子一样</p>
+<blockquote>
+<p>tip: 把方法挂在到 <code>prototype</code> 上的时候，最好加一个 <code>$</code> 前缀，避免跟其他变量冲突</p>
+</blockquote>
+<blockquote>
+<p>til again: 不要挂载太多方法到 <code>prototype</code> 上，只挂载一些使用频率非常高的</p>
+</blockquote>
+</li>
+<li><p><strong>需要响应的数据，在获取到接口数据的时候，先设置</strong></p>
+<p>大家有没有很经常碰到这样都一种情况，在循环列表的时候，我们需要给列表项一个控制显示的属性，如 是否可删除，是否已选中等等，而后端接口一般不会返回这种字段，因为这属于纯前端展示的，跟后端没啥关系，比如后端给的数据如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;name: &apos;abc&apos;, age: 18&#125;,</span><br><span class="line">  &#123;name: &apos;def&apos;, age: 20&#125;,</span><br><span class="line">  &#123;name: &apos;ghi&apos;, age: 22&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>我们不妨假设以上数据为学生列表</p>
+<p>然后我们需要渲染这个列表，在每一项后面显示一个勾选按钮，如果用户打勾，则这个按钮是绿色，默认这个按钮是灰色，这个时候，上表是没有满足这个渲染条件的数据，而如果我们在用户打勾的时候，再去添加这个数据的话，正常的做法是无法及时响应的。</p>
+<p>如果我们在获取到数据的时候，先给数组的每一项都加一个是否打勾的标示，就可以解决这个问题，我们假设我们获取到的数据是 <code>res.list</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res.list.map(item =&gt; &#123; </span><br><span class="line">  item.isTicked ＝ false</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这么做的原理是 <code>vue</code> 无法对不存在的属性作响应，所以我们在获取到数据的时候，先把需要的属性加上去，然后在赋值给 <code>data</code> , 这样 <code>data</code> 接收到数据的时候，已经是存在这个属性了，所以会响应。当然还有其他方法可以实现。不过对于一个强迫症来说，我还是比较倾向于这种做法</p>
+</li>
+<li><p><strong>封装全局基于 promise 的异步请求方法</strong></p>
+<p>看过很多项目的源码，发现大部分的异步请求都是直接使用 <code>axios</code> 之类的方法，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">  method: &apos;post&apos;,</span><br><span class="line">  url: &apos;/user/12345&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: &apos;Fred&apos;,</span><br><span class="line">    lastName: &apos;Flintstone&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> .then(function (response) &#123;</span><br><span class="line">    console.log(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(function (error) &#123;</span><br><span class="line">    console.log(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>如果有跨域，或者需要设置 <code>http</code> 头等，还需要加入更多的配置，而这些配置，对于同一个项目来说，基本都是一样的，不一样的只有 <code>url</code> 跟参数，既然这样，那我吗为什么不把它封装成一个方法呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function post (url,param) &#123;</span><br><span class="line">    return axios(&#123;</span><br><span class="line">      method: &apos;post&apos;,</span><br><span class="line">      url: url,</span><br><span class="line">      data: param</span><br><span class="line">      ... axios 的其他配置</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tip: 这里原来我多用了一层promise包起来,对简单的需求来说是太多余了,感觉掘金用户 <code>@日月为易。</code> 指出</p>
+</blockquote>
+<p>再结合第一点，我们就可以再任意 <code>vue</code> 实例中这样使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let param = &#123;</span><br><span class="line">  firstName: &apos;Fred&apos;,</span><br><span class="line">  lastName: &apos;Flintstone&apos;</span><br><span class="line">&#125;</span><br><span class="line">this.post(&apos;/user/12345&apos;,param)</span><br><span class="line">.then(...)</span><br><span class="line">.catch(...)</span><br></pre></td></tr></table></figure>
+<p>有没有比原始的简单很多呢？如果你的项目支持 <code>async</code> <code>await</code>，还可以这样用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let param = &#123;</span><br><span class="line">  firstName: &apos;Fred&apos;,</span><br><span class="line">  lastName: &apos;Flintstone&apos;</span><br><span class="line">&#125;</span><br><span class="line">let res  = await this.post(&apos;/user/12345&apos;,param)</span><br><span class="line">console.log(res) // res 就是异步返回的数据</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tip: <code>await</code> 关键字必须在 <code>被 async 修饰的函数里面使用</code></p>
+</blockquote>
+</li>
+<li><p><strong>如果你觉得有时候，你真的需要父子组件共享一个值，不如试试传个引用类型过去</strong></p>
+<p><code>vue</code> 的父子组件传值，有好多种方法，这里就不一一列举了，但是今天我们要了解的，是利用 <code>javascript</code> 的引用类型特性，还达到另一种传值的目的</p>
+<p>假设有这么一个需求，父组件需要传 3 个值到子组件，然后再子组件里面改动后，需要立马再父组件上作出响应，我们通常的做法上改完以后，通过 <code>this.$emit</code> 发射事件，然后再父组件监听对应的事件，然而这么做应对一两个数据还好，如果传的数据多了，会累死人。 我们不妨把这些要传递的数据，包再一个对象／数组 里面，然后在传给子组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;subComponent :subData=&quot;subData&quot;&gt;&lt;/subComponent&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    subData: &#123;</span><br><span class="line">      filed1: &apos;field1&apos;,</span><br><span class="line">      filed2: &apos;field2&apos;,</span><br><span class="line">      filed3: &apos;field3&apos;,</span><br><span class="line">      filed4: &apos;field4&apos;,</span><br><span class="line">      filed5: &apos;field5&apos;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，我们在子组件里面改动 <code>subData</code> 的内容，父组件上就能直接作出响应，无需 <code>this.$emit</code> 或 <code>vuex</code> 而且如果有其他兄弟组件的话，只要兄弟组件也有绑定这个 <code>subData</code> ，那么兄弟组件里面的 <code>subData</code> 也能及时响应</p>
+<blockquote>
+<p>tip: 首先，这么做我个人上感觉有点不符合规范的，如果没有特别多的数据，还是乖乖用 <code>this.$emit</code> 吧，其次，这个数据需要有特定的条件才能构造的出来，并不是所有情况都适用。</p>
+</blockquote>
+</li>
+<li><p><strong>异步请求的参数在 data 里面构造好，用一个对象包起来，会方便很多</strong></p>
+<p>有做过类似 <code>ERP</code> 类型的系统的同学，一定碰到过这样的一个场景，一个列表，有 N 个过滤条件，这个时候通常我们这么绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;field1&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;field2&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;field3&quot;&gt;</span><br><span class="line">....</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;fieldn&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line"> return &#123;</span><br><span class="line">   field1: &apos;value1&apos;,</span><br><span class="line">   field2: &apos;value2&apos;,</span><br><span class="line">   field3: &apos;value3&apos;,</span><br><span class="line">   ...</span><br><span class="line">   fieldn:&apos;valuen&apos;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后提交数据的时候这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var param = &#123;</span><br><span class="line">  backend_field1: this.field1,</span><br><span class="line">  backend_field2: this.field2,</span><br><span class="line">  backend_field3: this.field3,</span><br><span class="line">  ...</span><br><span class="line">  backend_fieldn: this.fieldn</span><br><span class="line">&#125;</span><br><span class="line">this.post(url,param)</span><br></pre></td></tr></table></figure>
+<p>如你看到的，每次提交接口，都要去构造参数，还很容易遗漏，我们不妨这样：先去接口文档里面看一下后端需要的字段名称，然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;queryParam.backend_field1&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;queryParam.backend_field2&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;queryParam.backend_field3&quot;&gt;</span><br><span class="line">....</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;queryParam.backend_fieldn&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">   queryParam:&#123;</span><br><span class="line">     backend_field1: <span class="string">'value1'</span></span><br><span class="line">     backend_field2: <span class="string">'value2'</span></span><br><span class="line">     backend_field3: <span class="string">'value3'</span></span><br><span class="line">     ...</span><br><span class="line">     backend_fieldn: <span class="string">'valuen'</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+然后提交数据的时候这样：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.post(url,<span class="keyword">this</span>.queryParam)</span><br></pre></td></tr></table></figure>
+</code></pre><p>   是的，这样做也是有局限性的，比如你一个数据在 2 个地方共用，比如前端组件绑定的是一个数组，你需要提交给后端的是 2 个字符串（例：<code>element ui</code> 的时间控件）,不过部分特殊问题稍微处理一下，也比重新构建一个参数简单不是吗？<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. **data 里面的数据多的时候，给每个数据加一个备注，会让你后期往回看的时候很清晰**</span><br><span class="line"></span><br><span class="line">   续上一点，`data` 里面有很多数据的时候，可能你写的时候是挺清晰的，毕竟都是你自己写的东西，可是过了十天半个月，或者别人看你的代码，相信我，不管是你自己，还是别人，都是一头雾水（记忆力超出常人的除外），所以我们不妨给每个数据后面加一个备注</span><br></pre></td></tr></table></figure></p>
+<p>   data () {<br>    return {<br>      field1: ‘value1’,  // 控制xxx显示<br>      field2: ‘value2’,  // 页面加载状态<br>      field3: [],        // 用户列表<br>      …<br>      fieldn: ‘valuen’   // XXXXXXXX<br>    }<br>   }<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">7. **逻辑复杂的内容，尽量拆成组件**</span><br><span class="line"></span><br><span class="line">   假设我们有一个这样的场景：</span><br></pre></td></tr></table></figure></p>
+<p>   <div><br>      <div>姓名：</div><br>      <div>性别：</div><br>      <div>年龄：</div><br>      …此处省略999个字段…<br>      <div>他隔壁邻居的阿姨家小狗的名字：</div><br>   </div><br>   <-- 当然，显示中我们不会傻到不用="" v-for,我们假设这种情况无法用v-for="" --=""><br>   <div><br>       <div>姓名：</div><br>       <div>性别：</div><br>       <div>年龄：</div><br>       …此处省略999个字段…<br>       <div>他隔壁邻居的阿姨家小狗的名字：</div><br>   </div><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这种情况，我们不妨把[用户]的代码，提取到一个组件里面： 假设如下代码，在 `comUserInfo.vue`</span><br></pre></td></tr></table></figure></--></p>
+   <template><br>    <div><br>      <div>姓名：</div><br>      <div>性别：</div><br>      <div>年龄：</div><br>      …此处省略999个字段…<br>      <div>他隔壁邻居的阿姨家小狗的名字：</div><br>    </div><br>   </template>
+
+<p>   <script><br>   export  default {<br>    props:{<br>      user:{<br>        type:Object,<br>        default: () =&gt; {}<br>      }<br>    }<br>   }<br>   </script><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后原来的页面可以改成这样(省略掉导入和注册组件，假设注册的名字是 `comUserInfo` )：</span><br></pre></td></tr></table></figure></p>
+<p>   <comuserinfo :user="user1"><br>   <comuserinfo :user="user2"><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   这样是不是清晰很多？不用看注释，都能猜的出来，这是2个用户信息模块， 这样做，还有一个好处就是出现错误的时候，你可以更容易的定位到错误的位置。</span><br><span class="line"></span><br><span class="line">8. **如果你只在子组件里面改变父组件的一个值，不妨试试 $emit(&apos;input&apos;) ,会直接改变 v-model**</span><br><span class="line"></span><br><span class="line">   我们正常的父子组件通信是 父组件通过 `props` 传给子组件，子组件通过 `this.$emit(&apos;eventName&apos;,value)` 通知父组件绑定在 `@eventName` 上的方法来做相应的处理。 但是这边有个特例，`vue` 默认会监听组件的 `input` 事件，而且会把子组件里面传出来的值，赋给当前绑定到 `v-model` 上的值</span><br><span class="line"></span><br><span class="line">   正常用法 - 父组件</span><br></pre></td></tr></table></figure></comuserinfo></comuserinfo></p>
+   <template><br>     <subcomponent :data="param" @datachange="dataChangeHandler"></subcomponent><br>   </template>
+
+<p>   <script><br>     export default {<br>       data () {<br>         return {<br>           param:’xxxxxx’<br>         }<br>       },<br>       methods:{<br>         dataChangeHandler (newParam) {<br>           this.param = newParam<br>         }<br>       }<br>     }<br>   </script><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">正常用法 - 子组件</span><br></pre></td></tr></table></figure></p>
+<p>   <script><br>     export default {<br>       methods:{<br>         updateData (newParam) {<br>           this.$emit(‘dataChange’,newParam)<br>         }<br>       }<br>     }<br>   </script><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**利用默认 input 事件 - 父组件**</span><br></pre></td></tr></table></figure></p>
+<p>   <template><br>     <subcomponent v-model="param"></subcomponent><br>   </template><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**利用默认 input 事件 - 子组件**</span><br></pre></td></tr></table></figure></p>
+<p>   <script><br>     export default {<br>       methods:{<br>         updateData (newParam) {<br>           this.$emit(‘input’,newParam)<br>         }<br>       }<br>     }<br>   </script><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这样，我们就能省掉父组件上的一列席处理代码，`vue` 会自动帮你处理好</span><br><span class="line"></span><br><span class="line">&gt; tip: 这种方法只适用于改变单个值的情况，且子组件对父组件只需简单的传值，不需要其他附加操作(如更新列表)的情况。</span><br><span class="line"></span><br><span class="line">**补充一个 this.$emit(&apos;update:fidldName&apos;,value) 方法 (感谢掘金用户 @日月为易。 指出)** 具体用法如下:</span><br><span class="line"></span><br><span class="line">父组件</span><br></pre></td></tr></table></figure></p>
+<pre><code>&lt;subComponent field1.sync=&quot;param1&quot; field2.sync=&quot;param2&quot;&gt;&lt;/subComponent&gt;
+</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">子组件</span><br></pre></td></tr></table></figure>
+<p>   <script><br>     export default {<br>       methods:{<br>         updateData1 (newValue) {<br>           this.$emit(‘update:field1’,newValue)<br>         },<br>         updateData2 (newValue) {<br>           this.$emit(‘update:field2’,newValue)<br>         }<br>       }<br>     }<br>   </script><br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   该方法,个人认为比较适用于 要更新的数据不能绑定在 `v-model` 的情况下,或者要双向通信的数据大于 1 个(1个也可以用,但我个人更推荐 `input` 的方式, 看个人喜好吧),但又不会很多的情况下.</span><br><span class="line"></span><br><span class="line">9. **conponents放在 Vue options 的最上面**</span><br><span class="line"></span><br><span class="line">   不知道大家有没有这样的经历: 导入组件，然后在也页面中使用，好的，报错了，为啥？忘记注册组件了，为什么会经常忘记注册组件呢？因为正常的一个 `vue` 实例的结构大概是这样的：</span><br></pre></td></tr></table></figure></p>
+<p>   import xxx form ‘xxx/xxx’<br>   export default {<br>     name: ‘component-name’,<br>     data () {<br>       return {<br>         // …根据业务逻辑的复杂程度，这里省略若干行<br>       }<br>     },<br>     computed: {<br>       // …根据业务逻辑的复杂程度，这里省略若干行<br>     },<br>     created () {<br>       // …根据业务逻辑的复杂程度，这里省略若干行<br>     },<br>     mounted () {<br>       // …根据业务逻辑的复杂程度，这里省略若干行<br>     },<br>     methods () {<br>       // …根据业务逻辑的复杂程度，这里省略若干行<br>     },<br>   }<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我不知道大家正常是把 `components` 属性放在哪个位置，反正我之前是放在最底下，结果就是导致经常犯上述错误。</span><br><span class="line"></span><br><span class="line">后面我把 `components` 调到第一个去了</span><br></pre></td></tr></table></figure></p>
+<p>   import xxx form ‘xxx/xxx’<br>   export default {<br>     components: {<br>       xxx<br>     },<br>     // 省略其他代码<br>   }<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   从此以后，妈妈再也不用担心我忘记注册组件了，导入和注册都在同一个位置，想忘记都难。</span><br><span class="line"></span><br><span class="line">10. **大部分情况下，生命周期里面，不要有太多行代码，可以封装成方法，再调用**</span><br><span class="line"></span><br><span class="line">    看过很多代码，包括我自己之前的，在生命周期里面洋洋洒洒的写了一两百行的代码，如：把页面加载的时候，该做的事，全部写在 `created` 里面，导致整个代码难以阅读，完全不知道你在页面加载的时候，做了些什么， 这个时候，我们不妨把那些逻辑封装成方法，然后在生命周期里面直接调用：</span><br></pre></td></tr></table></figure></p>
+<pre><code>created () {
+  // 获取用户信息
+  this.getUserInfo()
+  // 获取系统信息
+  this.getSystemInfo()
+  // 获取配置
+  this.getConfigInfo()
+},
+methods:{
+  // 获取用户信息
+  getUserInfo () {...},
+  // 获取系统信息
+  getSystemInfo () {...},
+  // 获取配置
+  getConfigInfo () {...},
+}
+```
+
+这样是不是一眼就能看的出，你在页面加载的时候做了些什么？
+
+&gt; tip: 这个应该算是一个约定俗成的规范吧，只是觉得看的比较多这样写的，加上我自己初学的时候，也这么做了，所以写出来，希望新入坑的同学能避免这个问题
+</code></pre><ol start="11">
+<li><p><strong>少用 watch，如果你觉得你好多地方都需要用到 watch，那十有八九是你对 vue 的 API 还不够了解</strong></p>
+<p><code>vue</code> 本身就是一个数据驱动的框架，数据的变动，能实时反馈到视图上去，如果你想要根据数据来控制试图，正常情况一下配合 <code>computed</code> 服用就能解决大部分问题了，而视图上的变动，我们一般可以通过监听 <code>input</code> <code>change</code> 等事件，达到实时监听的目的， 所以很少有需求使用到 <code>watch</code> 的时候,至少我最近到的十来个项目里面，是没有用过 <code>watch</code> 当然，并不是说 <code>watch</code> 是肯定没用处, <code>vue</code> 提供这个api,肯定是有他的道理，也有部分需求是真的需要用到的，只是我觉得应该很少用到才对，如果你觉得到处都得用到的话， 那么我觉得 <strong>十有八九</strong>你应该多去熟悉一下 <code>computed</code> 和 <code>vue</code> 的其他 <code>api</code>了</p>
+</li>
+</ol>
+<p>### </p>
+
+    
+  </div>
+
+  
+      <div class="git"></div>
+  
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            <span>微信扫一扫</span>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <span>支付宝扫一扫</span>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/06/13/code-review/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.muchu.com/2018/08/01/vue-实践技巧/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
