@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ioc-share | hanguanghui&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="IOC DI," />
+  
+
+  <meta name="description" content="浅谈依赖注入前言依赖注入，简而言之，在我们的代码中，依赖就是两个模块间的一种关联（在 Java 即指两个类）－－往往是其中的一个模块使用另外一个模块去做些事情。 谈依赖注入之前，先来了解一个概念“耦合度”。 耦合度(Coupling)是对模块间关联程度的度量。耦合的强弱取决与模块间接口的复杂性、调用模块的方式以及通过界面传送数据的多少。  软件设计中通常用耦合度和内聚度作为衡量模块独立程度的标准。">
+<meta name="keywords" content="IOC DI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ioc-share">
+<meta property="og:url" content="http://www.muchu.com/2018/09/26/ioc-share/index.html">
+<meta property="og:site_name" content="hanguanghui&#39;s blog">
+<meta property="og:description" content="浅谈依赖注入前言依赖注入，简而言之，在我们的代码中，依赖就是两个模块间的一种关联（在 Java 即指两个类）－－往往是其中的一个模块使用另外一个模块去做些事情。 谈依赖注入之前，先来了解一个概念“耦合度”。 耦合度(Coupling)是对模块间关联程度的度量。耦合的强弱取决与模块间接口的复杂性、调用模块的方式以及通过界面传送数据的多少。  软件设计中通常用耦合度和内聚度作为衡量模块独立程度的标准。">
+<meta property="og:locale" content="中文">
+<meta property="og:updated_time" content="2018-09-26T06:02:18.348Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ioc-share">
+<meta name="twitter:description" content="浅谈依赖注入前言依赖注入，简而言之，在我们的代码中，依赖就是两个模块间的一种关联（在 Java 即指两个类）－－往往是其中的一个模块使用另外一个模块去做些事情。 谈依赖注入之前，先来了解一个概念“耦合度”。 耦合度(Coupling)是对模块间关联程度的度量。耦合的强弱取决与模块间接口的复杂性、调用模块的方式以及通过界面传送数据的多少。  软件设计中通常用耦合度和内聚度作为衡量模块独立程度的标准。">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#浅谈依赖注入"><span class="toc-text">浅谈依赖注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ioc-share" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">ioc-share</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.09.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hanguanghui</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.muchu.com/2018/09/26/ioc-share/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="浅谈依赖注入"><a href="#浅谈依赖注入" class="headerlink" title="浅谈依赖注入"></a>浅谈依赖注入</h2><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>依赖注入，简而言之，在我们的代码中，依赖就是两个模块间的一种关联（在 Java 即指两个类）－－往往是其中的一个模块使用另外一个模块去做些事情。</p>
+<p>谈依赖注入之前，先来了解一个概念“耦合度”。</p>
+<p>耦合度(Coupling)是对模块间关联程度的度量。耦合的强弱取决与模块间接口的复杂性、调用模块的方式以及通过界面传送数据的多少。 </p>
+<p>软件设计中通常用耦合度和内聚度作为衡量模块独立程度的标准。划分摸块的一个准则就是高内聚低耦合。“低耦合，高内聚”是目前软件架构设计的重要问题之一，本文不详细阐述“低耦合，高内聚”的细节内容，留一点拓展的空间。</p>
+<p>低耦合就是在软件设计过程中尽量的降低耦合度，也就是“解耦”，那么解耦和要聊的依赖注入到底有何关系？</p>
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><p><strong>1.为什么需要依赖注入</strong></p>
+<p>首先我们来看一个例子，假设公司有一个项目（project），开始设计由一个php工程师来（phpDeveloper）实现coding：</p>
+<p>phpDeveloper：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Class phpDeveloper&#123;</span><br><span class="line">	public void coding()&#123;</span><br><span class="line">      // todo ...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Class project&#123;</span><br><span class="line">  phpDeveloper developer = new phpDeveloper();</span><br><span class="line">  developer.coding();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个没有IOC的最简单的例子，但是假如公司的php开发工程师辞职了，然后由另一个java开发工程师（javaDeveloper）接手，那么麻烦了，project类中的coding部分需要全部重写；</p>
+<p>javaDeveloper</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Class javaDeveloper&#123;</span><br><span class="line">  pubic void coding()&#123;</span><br><span class="line">    // todo ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重构后的project</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Class project&#123;</span><br><span class="line">  javaDeveloper developer = new javaDeveloper();</span><br><span class="line">  developer.coding();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假如又换人呢？怎么办？所以这里暴露出来的坏处是，一旦项目变得复杂，Developer越来越多，这样每次变动都会导致project的修改，无法实现更改。</p>
+<p>那如果我们 加上依赖注入（IOC）会有怎样的提示：</p>
+<p>首先定义一个Developer的接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Developer&#123;</span><br><span class="line">  coding();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重新定义java、php开发者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public Class JavaDeveloper implements Developer&#123;</span><br><span class="line">  @Override</span><br><span class="line">  coding()&#123;</span><br><span class="line">    // todo ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Class PhpDeveloper implements Developer&#123;</span><br><span class="line">   @Override</span><br><span class="line">  coding()&#123;</span><br><span class="line">    // todo ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候我们采用最简单的setter方式进行依赖注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public Class project&#123;</span><br><span class="line">  Developer developer;</span><br><span class="line">  setDeveloper(Developer developer)&#123;</span><br><span class="line">    this.developer = developer;</span><br><span class="line">  &#125;</span><br><span class="line">  developer.coding();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的例子就简单了实现了一种依赖注入。</p>
+<p> <strong>2.依赖注入的实现方式</strong></p>
+<p>(1)构造函数方式实现依赖注入</p>
+<p>这是最简单的一种依赖注入的方式，我们改造一下上面的project</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public Class project&#123;</span><br><span class="line">  public Developer developer;</span><br><span class="line">  public project(Developer developer)&#123;</span><br><span class="line">    this.developer= developer;</span><br><span class="line">  &#125;</span><br><span class="line">  developer.coding();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(2)setter方式实现注入</p>
+<p>如上过程描述</p>
+<p>(3)接口注入</p>
+<p>接口注入使用接口来提供setter方法，其实现方式如下。<br>首先要创建一个注入使用的接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface Idependence&#123;</span><br><span class="line">  void develop(Developer developer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Class project implements Idependence&#123;</span><br><span class="line">  void develop(Developer developer)&#123;</span><br><span class="line">    developer.coding();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.关于Spring、dagger2依赖注入框架</p>
+<p>java web中Spring以及安卓框架中dagger2都提供了不同方式idea依赖注入，此处就不做详细描述，留点空间继续探索。</p>
+
+    
+  </div>
+
+  
+      <div class="git"></div>
+  
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            <span>微信扫一扫</span>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <span>支付宝扫一扫</span>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/08/31/选择理论的简简简简简介/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/09/26/spring/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://www.muchu.com/2018/09/26/ioc-share/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
