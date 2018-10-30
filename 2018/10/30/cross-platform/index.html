@@ -15,17 +15,21 @@
     <meta name="keywords" content="前端,GIS,JAVA" />
   
 
-  <meta name="description" content="[解跨平台移动应用开发工具]###原文链接：https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;amp;utm_medium=social&amp;amp;utm_content=cross_platform_development  Framework7地址：http://framework7.io/ Evoth">
+  <meta name="description" content="[解跨平台移动应用开发工具]###原文链接：https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;amp;utm_medium=social&amp;amp;utm_content=cross_platform_development 在如今的电子世界当中，运行着各类操作系统，如何让应用适配每个操作系统平台，是开发者">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cross-platform">
 <meta property="og:url" content="http://www.muchu.com/2018/10/30/cross-platform/index.html">
 <meta property="og:site_name" content="hanguanghui&#39;s blog">
-<meta property="og:description" content="[解跨平台移动应用开发工具]###原文链接：https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;amp;utm_medium=social&amp;amp;utm_content=cross_platform_development  Framework7地址：http://framework7.io/ Evoth">
+<meta property="og:description" content="[解跨平台移动应用开发工具]###原文链接：https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;amp;utm_medium=social&amp;amp;utm_content=cross_platform_development 在如今的电子世界当中，运行着各类操作系统，如何让应用适配每个操作系统平台，是开发者">
 <meta property="og:locale" content="中文">
-<meta property="og:updated_time" content="2018-10-30T09:00:26.600Z">
+<meta property="og:image" content="https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=115d6d2113a1bd5a891ec1064adad4f8&quality=100&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F9d9d1b6599f01801f6723c1afbbc07cd.png">
+<meta property="og:image" content="https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=f8c8569f81e363a3ed562a0047622276&quality=100&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fa392856ada05a442a8129e9b16d35223.png">
+<meta property="og:image" content="https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=4a4c4a69f921c90c85b16bec83ba89ca&quality=100&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fd282a7495bba026474cdbb23633677bd.png">
+<meta property="og:updated_time" content="2018-10-30T09:02:55.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cross-platform">
-<meta name="twitter:description" content="[解跨平台移动应用开发工具]###原文链接：https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;amp;utm_medium=social&amp;amp;utm_content=cross_platform_development  Framework7地址：http://framework7.io/ Evoth">
+<meta name="twitter:description" content="[解跨平台移动应用开发工具]###原文链接：https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;amp;utm_medium=social&amp;amp;utm_content=cross_platform_development 在如今的电子世界当中，运行着各类操作系统，如何让应用适配每个操作系统平台，是开发者">
+<meta name="twitter:image" content="https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=115d6d2113a1bd5a891ec1064adad4f8&quality=100&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F9d9d1b6599f01801f6723c1afbbc07cd.png">
 
   
 
@@ -231,7 +235,187 @@
   <div class="article-content">
     
       <h2 id="解跨平台移动应用开发工具"><a href="#解跨平台移动应用开发工具" class="headerlink" title="[解跨平台移动应用开发工具]"></a>[解跨平台移动应用开发工具]</h2><p>###原文链接：<br><a href="https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;utm_medium=social&amp;utm_content=cross_platform_development" target="_blank" rel="noopener">https://instabug.com/blog/cross-platform-development/?utm_source=reddit&amp;utm_medium=social&amp;utm_content=cross_platform_development</a></p>
+<p>在如今的电子世界当中，运行着各类操作系统，如何让应用适配每个操作系统平台，是开发者们一直在思考的问题。因为平台、技术、工具的有多样性，让适配变得无比的困难与繁杂，甚至需要花费大量的时间和资金去进行研究。本文将介绍目前比较流行的可以开发跨平台应用的开发工具，希望能够帮助开发者们实现全平台覆盖。</p>
+<p>本文较长，其中大量资源网址值得收藏！</p>
+<p><strong>移动应用开发概述</strong></p>
+<p><strong>Web应用</strong></p>
+<p>Web应用是运行在网页上并存储在远端服务器上的应用，此类应用通过设备上的网页浏览器加载与展示。</p>
+<p>即便在某些情况下网页应用运行良好，但仍无法避免会出现一些问题，比如需要连接到网络才能在设备上运行，因为所需的资源并未存储在本地设备上，而是在远端服务器上。另外，此类应用无法在移动商店上直接使用，导致用户很难找到和下载使用。</p>
+<p><strong>Hybrid跨平台应用</strong></p>
+<p>Hybrid应用又称为混合应用，此类应用基本上使用每个平台的浏览器内置组件进行包装和打包，以达到在每个平台上运行的目的，应用就像该平台上的Native应用一样。混合应用主要使用的语言为HTML5、JavaScript和CSS。</p>
+<p>混合跨平台应用解决了Web应用面临的问题，因为混合应用在本地运行时无需网络连接，而且还能在应用商店上发布，可以让用户轻松找到，从而增强应用的可发现性、增加用户量等。</p>
+<p>混合跨平台应用开发工具：Apache Cordova、Ionic、Adobe PhoneGap等。</p>
+<p><strong>Native应用</strong></p>
+<p>原生应用是为了在特定平台或操作系统上工作而开发的应用。</p>
+<p>对于iOS来说，开发者使用的是Swift或Objective-C编写iOS应用，而对于Android来说，开发者使用的是Java或Kotlin编写Android应用。从移动开发工具来看，iOS开发者经常使用Apple的Xcode或者第三方的AppCode等工具，而Android开发者经常使用Android Studio作为它们的主力开发IDE。</p>
+<p><strong>Native 跨平台应用</strong></p>
+<p>原生跨平台工具允许开发者编写一次代码，然后将该代码转换为适配多个操作系统的本地代码，让开发者以最小的成本在不同的平台上发布移动应用。原生跨平台应用是混合应用和本地应用的完美结合，不仅提供了混合应用的代码重用功能，而且性能也与本地应用类似。</p>
+<p>原生跨平台应用开发工具：React Native、Xamarin、Titanium等。</p>
+<p><strong>跨平台移动应用开发</strong></p>
+<p>跨平台移动应用开发是创建可以使用单个代码库，在多个平台上部署或发布的移动应用开发过程，跨平台移动应用开发无需使用每个平台的对应的本地技术去进行多次开发。</p>
+<p><strong>跨平台开发有以下优点：</strong></p>
 <ul>
+<li><strong>可重用代码：</strong>跨平台开发工具允许只编写一次代码，然后将代码导出到需要操作的系统和平台上，无需为每个平台单独编写创建代码；</li>
+<li><strong>便利性：</strong>跨平台开发工具能够省去学习许多编程语言的麻烦，开发者只需要理解领会一种语言即可；</li>
+<li><strong>可维护代码：</strong>当需要修改或更新应用时，开发者只需更新一个代码库，就可以将更新同步反映在平台所有的应用上；</li>
+<li><strong>成本效率：</strong>跨平台开发可以让单个开发团队能够在多个平台上进行工作，且大多数的跨平台开发工具都是免费的。</li>
+<li><strong>市场覆盖率：</strong>通过多平台发布应用，可以让其增加曝光量，提升用户基数，从而提高投资回报率和经济利益。</li>
+</ul>
+<p>虽然跨平台开发工具拥有很多优势，但在某些场景下的缺点也相当明显：</p>
+<ul>
+<li><strong>性能：</strong>即便一些跨平台开发工具提供了接近本地应用的性能，但仍有不足，如果所开发的应用属于最高优先级，不建议使用跨平台开发工具。</li>
+<li><strong>3D和图形：</strong>与性能上的缺点类似，跨平台开发工具无法提供最佳图形和最佳的用户体验，且无法访问核心OS库（如图形），如果所开发的应用严重依赖于图形，比如移动游戏类应用就不建议使用跨平台开发工具。</li>
+<li><strong>单平台应用：</strong>如果所开发的应用尽在单一平台（如iOS或Android）上发布，那么还是应该使用本地开发的应用，在这种场景下，只需要一个团队使用一种技术即可，没有必要去损失性能。</li>
+<li><strong>特定与平台的功能：</strong>虽然跨平台开发工具提供了不同平台之间共享的许多基本功能，但它们可能缺少Apple、Google和Microsoft的操作系统上提供的某些特定功能。</li>
+<li><strong>特定与设备的功能：</strong>跨平台开发工具可以让开发者访问的不同功能，如相机或GPS，但如果所开发的应用需要直接访问和处理设备的硬件，本地开发应用是更好的选择。</li>
+<li><strong>更新延迟：</strong>在一些特定平台发布更新时，可能需要等一段时间才能在所有平台开发工具中反应这些更新。</li>
+</ul>
+<p><strong>跨平台开发技术栈</strong></p>
+<p>虽然跨平台开发工具可以帮助开发者节省学习不同技术的时间和工作量，但仍然需要熟练掌握每种工具，使用的技术有：</p>
+<ul>
+<li>React Native：JavaScript（JSX）、ES6、React.JS</li>
+<li>Xamarin: C#</li>
+<li>Cordova: HTML、CSS 、JavaScript</li>
+</ul>
+<p><strong>常用跨平台开发工具</strong></p>
+<ul>
+<li>Ionic<br>地址：<a href="https://ionicframework.com/" target="_blank" rel="noopener">https://ionicframework.com/</a></li>
+<li>Adobe PhoneGap<br>地址：<a href="https://phonegap.com/" target="_blank" rel="noopener">https://phonegap.com/</a></li>
+<li>Titanium<br>地址：<br><a href="https://www.appcelerator.com/Titanium/" target="_blank" rel="noopener">https://www.appcelerator.com/Titanium/</a></li>
+<li>Framework7<br>地址：<a href="http://framework7.io/" target="_blank" rel="noopener">http://framework7.io/</a></li>
+<li>Apache Weex<br>地址：<a href="https://weex.apache.org/" target="_blank" rel="noopener">https://weex.apache.org/</a></li>
+<li>Flutter<br>地址：<a href="https://flutter.io/" target="_blank" rel="noopener">https://flutter.io/</a></li>
+<li>Native Script<br>地址：<a href="https://www.nativescript.org/" target="_blank" rel="noopener">https://www.nativescript.org/</a></li>
+<li>Jasonette<br>地址：<a href="http://jasonette.com/" target="_blank" rel="noopener">http://jasonette.com/</a></li>
+<li>ManifoldJS<br>地址：<a href="https://github.com/pwa-builder/ManifoldJS" target="_blank" rel="noopener">https://github.com/pwa-builder/ManifoldJS</a></li>
+</ul>
+<p><strong>三大主流跨平台开发工具</strong></p>
+<p>React Native</p>
+<p><img src="https://timg01.bdimg.com/timg?pacompress&amp;imgtype=0&amp;sec=1439619614&amp;autorotate=1&amp;di=115d6d2113a1bd5a891ec1064adad4f8&amp;quality=100&amp;size=b870_10000&amp;src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F9d9d1b6599f01801f6723c1afbbc07cd.png" alt="img"></p>
+<p>React Native是由Facebook基于其React JavaScript库创建的跨平台本地移动应用开发框架。主要使用JavaScript与JSX（JavaScript的扩展），ES6（ECMAScript 6），JavaScript的主要更新（包括许多新功能）和React.JS（用于构建用户界面的JavaScript库）。</p>
+<p>React Native允许开发者使用React Native组件构建移动应用，然后再将其编译为本地应用，这些应用几乎与使用本地工具编写的应用完全相同。</p>
+<p><strong>React Native的优点</strong></p>
+<p>使用React Native进行跨平台移动应用开发的优点包括：</p>
+<ul>
+<li><strong>可重用代码：</strong>可开发应用并从单个代码库将其导出到多个平台上。</li>
+<li><strong>应用商店：</strong> 可以在各个平台的应用商店中发布应用。</li>
+<li><strong>性能：</strong>React Native可将应用编译为本地应用，这与使用本地工具创建的应用几乎完全相同，使其比必须在特定于平台的Web组件中运行代码的混合应用更快。</li>
+<li><strong>本地UI组件：</strong>React Native允许开发者使用React Native UI组件创建视图，这些组件被编译为特定于平台的UI组件，与使用HTML标记的其他跨平台工具不同。通过现成的组件，可以节省大量的时间。</li>
+<li><strong>热重新加载：</strong>React Native中提供一项允许更改代码在iOS和Android应用中立即生效的功能，可以进行可视化更改。</li>
+<li><strong>测试：</strong>调试React Native应用非常容易，因为它发布了本地应用版本，可以使用Expo这样的工具在物理设备上进行测试，无需在Xcode或Android Studio中打开它们。</li>
+<li><strong>本地代码：</strong>与大多数其他跨平台开发工具不同，React Native允许开发者单独修改已发布的本地应用，它可以选择在React Native代码和本地代码之间进行组合，无论是Swift，Objective-C，或者是Java。如果想使用特定于平台的代码为不同平台实现单独的可视组件，就非常有用。</li>
+<li><strong>可靠性：</strong>React Native由Facebook创建，许多世界顶级移动应用都在使用React Native，比如Facebook，Instagram，SoundCloud和Skype。</li>
+<li><strong>免费：</strong>开源。</li>
+</ul>
+<p><strong>React Native的缺点</strong></p>
+<p>虽然React Native是目前最好的跨平台开发工具之一，但React Native仍然具有一些缺点：</p>
+<ul>
+<li><strong>新技术：</strong>学习JSX和ECMAScript并不是一件容易的事，可能比其他熟悉的技术（如HTML和CSS）要花费更多时间。</li>
+<li><strong>原生UI组件：</strong>虽然UI组件是React Native的最大优势之一，但目前只有少数几种现成的可用。</li>
+<li><strong>本地代码：</strong>在某些情况下，开发者可能需要在移动应用中编写本地或平台特定的代码，特别是如需访问设备硬件（如相机或GPS），会破坏跨平台开发的目的，对小型团队来说React Native的作用不大。</li>
+<li><strong>性能：</strong>虽然与大多数其他跨平台开发框架相比，React Native在性能方面表现优异，但比起使用特定于平台的工具和语言的本地应用进行开发来说仍有不足。</li>
+</ul>
+<p><strong>React Native 开发工具</strong></p>
+<ul>
+<li>Atom<br>地址：<a href="https://atom.io/" target="_blank" rel="noopener">https://atom.io/</a></li>
+<li>Nuclide<br>地址：<a href="https://nuclide.io/" target="_blank" rel="noopener">https://nuclide.io/</a></li>
+<li>Visual Studio Code<br>地址：<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></li>
+<li>React Native Tools<br>地址：<br><a href="https://marketplace.visualstudio.com/items?itemName=vsmobile.vscode-react-native" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=vsmobile.vscode-react-native</a></li>
+</ul>
+<p><strong>React Native 开发组件</strong></p>
+<ul>
+<li>Redux<br>地址：<a href="https://redux.js.org/" target="_blank" rel="noopener">https://redux.js.org/</a></li>
+<li>Expo<br>地址：<a href="https://expo.io/" target="_blank" rel="noopener">https://expo.io/</a></li>
+<li>Ignite<br>地址：<a href="https://infinite.red/ignite" target="_blank" rel="noopener">https://infinite.red/ignite</a></li>
+<li>Flow<br>地址：<a href="https://flow.org/" target="_blank" rel="noopener">https://flow.org/</a></li>
+<li>ESLint<br>地址：<a href="https://eslint.org/" target="_blank" rel="noopener">https://eslint.org/</a></li>
+<li>ReduxSauce<br>地址：<br><a href="https://github.com/infinitered/reduxsauce" target="_blank" rel="noopener">https://github.com/infinitered/reduxsauce</a></li>
+</ul>
+<p><strong>React Native UI组件</strong></p>
+<ul>
+<li>Snowflake<br>地址：<br><a href="https://github.com/bartonhammond/snowflake" target="_blank" rel="noopener">https://github.com/bartonhammond/snowflake</a></li>
+<li>NativeBase<br>地址：<a href="https://nativebase.io/" target="_blank" rel="noopener">https://nativebase.io/</a></li>
+</ul>
+<p><strong>React Native 测试工具</strong></p>
+<ul>
+<li>Enzyme<br>地址：<br><a href="https://github.com/airbnb/enzyme" target="_blank" rel="noopener">https://github.com/airbnb/enzyme</a></li>
+<li>Reactotron<br>地址：<a href="https://infinite.red/reactotron" target="_blank" rel="noopener">https://infinite.red/reactotron</a></li>
+<li>Instabug<br>地址：<br><a href="https://instabug.com/?src=InstabugBlog&amp;mdm=internal&amp;ref=cross_platform_development&amp;term=instabug" target="_blank" rel="noopener">https://instabug.com/?src=InstabugBlog&amp;mdm=internal&amp;ref=cross_platform_development&amp;term=instabug</a></li>
+</ul>
+<p><strong>Xamarin</strong></p>
+<p><img src="https://timg01.bdimg.com/timg?pacompress&amp;imgtype=0&amp;sec=1439619614&amp;autorotate=1&amp;di=f8c8569f81e363a3ed562a0047622276&amp;quality=100&amp;size=b870_10000&amp;src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fa392856ada05a442a8129e9b16d35223.png" alt="img"></p>
+<p>Xamarin是一个跨平台的移动应用开发框架，由微软基于Mono（一个免费的开源.NET框架），使用C＃创建本地应用。</p>
+<p><strong>Xamarin 优点</strong></p>
+<p>Xamarin跨平台移动应用开发具有多个优势，包括：</p>
+<ul>
+<li><strong>可重用代码：</strong>开发应用并从单个代码库将其导出到多个平台上。</li>
+<li><strong>应用商店：</strong>可以在各个平台的应用商店中发布应用。</li>
+<li><strong>完整的开发堆栈：</strong>许多开发者认为Xamarin是最完整的跨平台移动应用开发框架。拥有自己的专用堆栈，C＃作为编程语言；Visual Studio作为IDE，与Xamarin完全集成；.NET作为开发平台；Xamarin测试云进行测试；以及Xamarin.Insights用于分析。</li>
+<li><strong>性能：</strong>Xamarin在性能方面也几乎与本地应用相同。 Xamarin比混合应用更快，因为混合应用必须在特定于平台的Web组件中运行代码。</li>
+<li><strong>本地UI组件：</strong>使用Xamarin Native UI组件创建视图，这些组件通过Xamarin.Forms编译为特定于平台的UI组件，Xamarin.Forms包含面向.NET开发者的完整跨平台UI工具包，或可以通过Native UI开发。</li>
+<li><strong>插件和API：</strong>Xamarin提供了一组允许访问硬件功能的插件和API。它还支持通过链接本地库进行自定义。 测试：通过在物理设备上安装Xamarin.Forms Live Player应用，开发者可以使用实时预览立即测试和调试应用，并可以实时同步应用与设备。</li>
+<li><strong>可靠性：</strong>Xamarin于2016年被微软收购，截至目前，已在120多个国家/地区拥有超过140万名开发者。所以它绝对可靠且拥有良好的维护。</li>
+<li><strong>Xamarin大学：</strong>Xamarin提供由Xamarin专家指导的实时、互动的移动开发培训，涵盖10个方面的80多个课程，让开发者可以轻松地学习。</li>
+<li><strong>免费：</strong>开源。</li>
+</ul>
+<p><strong>Xamarin 缺点</strong></p>
+<p>虽然Xamarin可以应用许多场景，但它也是有一些缺点的：</p>
+<ul>
+<li><strong>应用大小：</strong>通常已知Xamarin应用大小比本地应用更大，因此在内存管理方面不是很理想。</li>
+<li><strong>更新延迟：</strong>Xamarin的更新时间有时会比平台的更新更慢，无论是新功能的迭代还是其他，因此可能会导致应用出现一些问题。</li>
+<li><strong>本地代码：</strong>当使用Xamarin.iOS或Xamarin.Android开发具有原生外观的移动应用时，将需要一些本地语言的基本知识，如Objective-C、Swift和Java。</li>
+<li><strong>图形：</strong>虽然Xamarin使用单个代码库为多个平台构建应用，但它主要在平台之间共享代码逻辑，而UI组件又是特定于平台的。这使得Xamarin并不适合严重依赖图形的应用，比如手机游戏。</li>
+</ul>
+<p><strong>Xamarin开发工具</strong></p>
+<ul>
+<li>Visual Studio<br>地址：<br><a href="https://visualstudio.microsoft.com/vs/mac/" target="_blank" rel="noopener">https://visualstudio.microsoft.com/vs/mac/</a></li>
+<li>XCode<br>地址：<br><a href="https://developer.apple.com/xcode/" target="_blank" rel="noopener">https://developer.apple.com/xcode/</a></li>
+</ul>
+<p><strong>Xamarin 开发组件</strong></p>
+<ul>
+<li>NuGet<br>地址：<a href="https://www.nuget.org/" target="_blank" rel="noopener">https://www.nuget.org/</a></li>
+<li>Xamarin Inspector<br>地址：<br><a href="https://docs.microsoft.com/zh-cn/xamarin/tools/inspector/install?tabs=windows" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/xamarin/tools/inspector/install?tabs=windows</a></li>
+<li>Prism<br>地址：<br><a href="https://github.com/PrismLibrary/Prism" target="_blank" rel="noopener">https://github.com/PrismLibrary/Prism</a></li>
+<li>MFractor<br>地址：<a href="https://www.mfractor.com/" target="_blank" rel="noopener">https://www.mfractor.com/</a></li>
+<li>Resharper<br>地址：<br><a href="https://www.jetbrains.com/resharper/" target="_blank" rel="noopener">https://www.jetbrains.com/resharper/</a></li>
+</ul>
+<p><strong>Xamarin 测试工具</strong></p>
+<ul>
+<li>NUnit<br>地址：<a href="http://nunit.org/" target="_blank" rel="noopener">http://nunit.org/</a></li>
+<li>xUnit.net<br>地址：<a href="https://xunit.github.io/" target="_blank" rel="noopener">https://xunit.github.io/</a></li>
+<li>Visual Studio Unit Testing Framework<br>地址：<br><a href="https://docs.microsoft.com/zh-cn/visualstudio/test/writing-unit-tests-for-the-dotnet-framework-with-the-microsoft-unit-test-framework-for-managed-code?view=vs-2015" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/visualstudio/test/writing-unit-tests-for-the-dotnet-framework-with-the-microsoft-unit-test-framework-for-managed-code?view=vs-2015</a></li>
+<li>Instabug<br>地址：<br><a href="https://instabug.com/?src=InstabugBlog&amp;mdm=internal&amp;ref=cross_platform_development&amp;term=instabug" target="_blank" rel="noopener">https://instabug.com/?src=InstabugBlog&amp;mdm=internal&amp;ref=cross_platform_development&amp;term=instabug</a></li>
+</ul>
+<p><strong>Apache Cordova</strong></p>
+<p><img src="https://timg01.bdimg.com/timg?pacompress&amp;imgtype=0&amp;sec=1439619614&amp;autorotate=1&amp;di=4a4c4a69f921c90c85b16bec83ba89ca&amp;quality=100&amp;size=b870_10000&amp;src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fd282a7495bba026474cdbb23633677bd.png" alt="img"></p>
+<p>Apache Cordova是一个跨平台的移动应用开发框架，用于使用包括HTML，CSS和JavaScript在内的Web技术，构建混合移动应用。</p>
+<p><strong>Apache Cordova 优点</strong></p>
+<p>使用Apache Cordova进行跨平台移动应用开发的一些优势包括：</p>
+<ul>
+<li><strong>可重用代码：</strong>可以开发应用并从单个代码库将其导出到多个平台上。</li>
+<li><strong>应用商店：</strong>可以在各个平台的应用商店中发布应用。</li>
+<li><strong>多平台支持：</strong>Apache Cordova支持大多数开发者所使用的移动平台和操作系统，包括Android，iOS，Windows 8.1，iPhone 8.1和10，OS X，几乎可以覆盖所有移动用户。</li>
+<li><strong>大量插件：</strong>Cordova提供各种插件。</li>
+<li><strong>所用技术：</strong>Cordova不是一种编程语言，因此开发者可以使用已知的Web技术（如HTML，CSS和JavaScript）进行应用开发。还可以使用自身熟悉的工具，包括所使用的编辑器。</li>
+<li><strong>免费：</strong>开源。</li>
+</ul>
+<p><strong>Apache Cordova 缺点</strong></p>
+<p>和任何跨平台移动应用开发工具一样，Cordova也缺点，包括：</p>
+<ul>
+<li><strong>性能：</strong>使用Apache Cordova创建的移动应用，会因性能问题而受到影响，因为它是一种混合的跨平台移动应用开发工具。</li>
+<li><strong>开发工具：</strong>由于Apache Cordova使用HTML，CSS和JavaScript等Web技术，因此用于Apache Cordova的大多数开发工具都针对Web开发进行了优化，而非移动应用开发。</li>
+<li><strong>测试：</strong>在Apache Cordova中调试代码会比较繁琐，虽然可以使用开发工具修复任何代码上的bug，但需要使用特定于平台的工具来修复特定平台中发生的问题。</li>
+<li><strong>技术：</strong>即便开发者可能熟练掌握了HTML，CSS和JavaScript等网络技术，但仍需要具备Web和移动应用的经验才能创建Cordova移动应用。</li>
+<li><strong>支持的平台：</strong>Cordova多年来已经弃用了许多支持的平台，包括BlackBerry，Firefox OS，Symbian，Ubuntu Touch，webOS，Windows Phone 8.1和Windows Phone 10.虽然Cordova可能很难弃用iOS和Android，但仍然无法保证它继续支持任何其他当前所有平台。</li>
+<li><strong>更新延迟：</strong>Cordova的更新时间有时会比平台的更新更慢，无论是新功能的迭代还是其他，因此可能会导致应用出现一些问题。</li>
+<li><strong>插件：</strong>虽然Cordova提供了比其他任何跨平台开发工具中都多的插件，但它仍然无法与本机移动应用开发工具相比。</li>
+</ul>
+<p><strong>Apache Cordova 框架</strong></p>
+<ul>
+<li>Adobe PhoneGap<br>地址：<a href="https://phonegap.com/" target="_blank" rel="noopener">https://phonegap.com/</a></li>
+<li>Monaca<br>地址：<a href="https://monaca.io/" target="_blank" rel="noopener">https://monaca.io/</a></li>
+<li>Onsen UI<br>地址：<a href="https://onsen.io/" target="_blank" rel="noopener">https://onsen.io/</a></li>
+<li>Cocoon<br>地址：<a href="https://cocoon.io/" target="_blank" rel="noopener">https://cocoon.io/</a></li>
 <li>Framework7<br>地址：<a href="http://framework7.io/" target="_blank" rel="noopener">http://framework7.io/</a></li>
 <li>Evothings Studio<br>地址：<a href="https://evothings.com/" target="_blank" rel="noopener">https://evothings.com/</a></li>
 <li>Mobiscroll<br>地址：<a href="https://mobiscroll.com/" target="_blank" rel="noopener">https://mobiscroll.com/</a></li>
